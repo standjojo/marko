@@ -1,0 +1,59 @@
+<div.header-timer>
+  ${state.timer}:${state.millseconds}
+</div>
+
+class {
+  onCreate() {
+    this.targetTime = new Date().getTime() + 3 * 60 * 60 * 1000
+
+    const { timer, millseconds } = this.getTimer()
+    this.state = {
+      timer,
+      millseconds
+    }
+
+    this.interval
+  }
+
+  onMount() {
+    this.interval = setInterval(() => {
+      this.state = this.getTimer()
+    }, 10)
+  }
+
+  onDestroy() {
+    clearInterval(this.interval)
+  }
+
+  getTimer() {
+    const currentTime = new Date().getTime()
+    const downTime = this.targetTime - currentTime
+
+    let hover = this.toDubleString(Math.floor(downTime/60/60/1000%24))
+    let minute = this.toDubleString(Math.floor(downTime/60/1000%60))
+    let second =  this.toDubleString(Math.floor(downTime/1000%60))
+
+    let millseconds = Math.floor(downTime%1000).toString().slice(0, 2)
+    if (millseconds.length < 2) {
+      millseconds += '0'
+    }
+
+    return {
+      timer: `${hover}:${minute}:${second}`,
+      millseconds
+    }
+  }
+
+  toDubleString(str) {
+    let result = str.toString().slice(0, 2)
+    if (result.length < 2) {
+      result = '0' + result
+    }
+
+    return result
+  }
+}
+
+style {
+  
+}

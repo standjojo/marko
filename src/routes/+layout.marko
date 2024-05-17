@@ -14,16 +14,34 @@
 
 style {
   html, body {
+    --h1: 5rem;
+    --h2: 4rem;
+    --h3: 3rem;
+    --h4: 2rem;
+    --h5: 1.5rem;
+    --h6: 1rem;
+
     font-family: system-ui;
     padding: 0;
     margin: 0;
     height: 100%;
-    color: #fff;
+    font-size: 1vw;
   }
   code {
     color: #fc0;
   }
   a {
     color: #09c;
+  }
+
+  @media (max-width: 768px) {
+    html {
+      font-size: 1.5vw;
+    }
+  }
+  @media (max-width: 450px) {
+    html {
+      font-size: 10px;
+    }
   }
 }

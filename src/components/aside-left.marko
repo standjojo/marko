@@ -1,0 +1,30 @@
+<div.aside_left>
+  <div.header>
+    <div.header_title>title</div>
+    <div.header_info>some information</div>
+  </div>
+  <product-item title="product1" />
+  <product-item title="product2" />
+  <product-item title="product3" />
+</div>
+
+style {
+  .aside_left {
+    flex: 1;   
+    .header {
+      padding: 2vw;
+
+      background-color: rgb(1, 51, 160);
+
+      .header_title {
+        color: rgb(74, 202, 242);
+        font-size: var(--h4);
+      }
+
+      .header_info {
+        color: #fff;
+        font-size: var(--h6);
+      }
+    }
+  }
+}
